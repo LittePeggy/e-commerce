@@ -21,3 +21,10 @@
     height: 880rpx;
     display: flex;
 }
+
+.fashion{
+    margin-top: 20rpx;
+    width: 100%;
+    height: 880rpx;
+    display: flex;
+}
