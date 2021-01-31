@@ -2,6 +2,7 @@ import {Theme} from "../../modle/theme";
 import {Banner} from "../../modle/banner";
 import {Category} from "../../modle/category";
 import {Activity} from "../../modle/activity";
+import {SpuPaging} from "../../modle/spu-paging";
 
 Page({
 
@@ -25,6 +26,10 @@ Page({
   onLoad: async function (options) {
     await this.initLocation()
   },
+
+  initSpuList(){
+    const spuList = await SpuPaging.getSpuPaging();
+  }
 
   async initLocation(){
     const theme = new Theme()

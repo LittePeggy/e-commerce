@@ -8,6 +8,7 @@ class Paging{
     locker = false
     req
     moreData = true
+    accumulator
 
     constructor(req, count = 10, start = 0){
         this.req = req
@@ -19,43 +20,56 @@ class Paging{
     /**
      * 获取下一页数据
      */
-    getMoreData(){
+    async getMoreData(){
+        // 判断是否有下一页
+        if (!this.moreData){
+            return
+        }
         // 判断上一个请求是否结束
         if(!this.getLocker()){
             return
         }
         // request
-        this.getActualMoreData()
+        const data = await this.getActualMoreData()
         // 释放锁
         this.releaseLocker()
+        return data;
     }
 
-    getActualMoreData(){
+    async getActualMoreData(){
         let req = this.getCurrentreq()
-        let paging = Http.request(req)
+        let paging = await Http.request(req)
         if(!paging){
             return null;
         }
         if (paging.total === 0){
             return {
+                empty: true,
                 items: [],
-                moreData: false
+                moreData: false,
+                accumulator: []
             };
         }
-        if (paging.page < paging.total_page - 1){
+        this.moreData = Paging._moreData(paging.total_page, paging.page)
+        if (this.moreData){
             // 分页计算
-            this.countPaging()
-        } else {
-            this.moreData = false
+            this.start = this.start + this.count
         }
+        this._accumulat(paging.items)
         return {
+            empty: false,
             items: paging.items,
-            moreData: this.moreData
+            moreData: this.moreData,
+            accumulator: this.accumulator
         }
     }
 
-    countPaging(){
-        this.start = this.start + this.count
+    _accumulat(items){
+        this.accumulator.concat(items)
+    }
+
+    static _moreData(totailPage, pageNum){
+        return pageNum < totailPage - 1
     }
 
     getCurrentreq(){
