@@ -25,11 +25,13 @@ Page({
    */
   onLoad: async function (options) {
     await this.initLocation()
+    await this.initBottomSpuList()
   },
 
-  initSpuList(){
+  async initBottomSpuList(){
     const spuList = await SpuPaging.getSpuPaging();
-  }
+    wx.lin.renderWaterFlow(spuList.items)
+  },
 
   async initLocation(){
     const theme = new Theme()

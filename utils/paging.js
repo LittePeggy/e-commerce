@@ -8,7 +8,7 @@ class Paging{
     locker = false
     req
     moreData = true
-    accumulator
+    accumulator = []
 
     constructor(req, count = 10, start = 0){
         this.req = req
@@ -75,7 +75,7 @@ class Paging{
     getCurrentreq(){
         let url = this.url
         let param = `start=${this.start}&count=${this.count}`
-        if (url.indexOf('?')){
+        if (url.includes('?')){
             url += "&" + param
         } else {
             url += "?" + param

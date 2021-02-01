@@ -19,5 +19,6 @@
     <image class="fashion" src="{{themeH.entrance_img}}" ></image>
     <view class="spu-bottom">
         <image class="title-bottom" src="../../images/home/recommend.png"></image>
+        <l-water-flow generic:l-water-flow-item="s-spu-preview"/>
     </view>
 </view>
