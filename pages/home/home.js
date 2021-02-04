@@ -18,7 +18,8 @@ Page({
     themeSpuList: [],
     themeF: null,
     bannerG: null,
-    spuPaging: null
+    spuPaging: null,
+    loadingType: 'loading'
   },
 
   /**
@@ -74,6 +75,12 @@ Page({
    */
   onReachBottom: async function () {
     let spuList = await this.data.spuPaging.getMoreData()
+    if(!spuList){
+      this.setData({
+        loadingType: 'end'
+      })
+      return
+    }
     wx.lin.renderWaterFlow(spuList.items)
   },
 
