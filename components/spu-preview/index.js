@@ -11,7 +11,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    tags: Array
+    tags: Array,
+    h: null
   },
 
   observers: {
@@ -30,6 +31,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onLoadImg: function (event){
+      const {width, height} = event.detail;
+      const h = height * 340 / width
+      this.setData({
+        h
+      })
+    }
   }
 })
