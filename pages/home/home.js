@@ -17,7 +17,9 @@ Page({
     themeE: null,
     themeSpuList: [],
     themeF: null,
-    bannerG: null
+    bannerG: null,
+    spuPaging: null,
+    loadingType: 'loading'
   },
 
   /**
@@ -29,7 +31,9 @@ Page({
   },
 
   async initBottomSpuList(){
-    const spuList = await SpuPaging.getSpuPaging();
+    const spuPaging = SpuPaging.getSpuPaging();
+    const spuList = await spuPaging.getMoreData()
+    this.data.spuPaging = spuPaging;
     wx.lin.renderWaterFlow(spuList.items)
   },
 
@@ -69,8 +73,15 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
+  onReachBottom: async function () {
+    let spuList = await this.data.spuPaging.getMoreData()
+    if(!spuList){
+      this.setData({
+        loadingType: 'end'
+      })
+      return
+    }
+    wx.lin.renderWaterFlow(spuList.items)
   },
 
   /**

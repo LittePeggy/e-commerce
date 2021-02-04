@@ -2,12 +2,10 @@ import {Paging} from "../utils/paging";
 
 class SpuPaging{
 
-    static async getSpuPaging(){
-        const paging = new Paging({
+    static getSpuPaging(){
+        return new Paging({
             url: `spu/latest`
         }, 3)
-
-        return await paging.getMoreData();
     }
 }
 
