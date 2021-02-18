@@ -45,7 +45,14 @@ Page({
     const gridC = await Category.getLoncationC()
     const activityD = await Activity.getLocationD()
     const themeE = await theme.getHomeLocationE()
-    let themeSpuList = await Theme.getLocationESpuList()
+    let themeSpuList = []
+    if(themeE.online){
+      const data = await Theme.getLocationESpuList()
+      if (data) {
+        themeSpuList = data.spu_list.slice(0, 8)
+      }
+    }
+
     const themeF = await theme.getHomeLocationF()
     const bannerG = await Banner.getLocationG()
     const themeH = await theme.getHomeLocationH()
