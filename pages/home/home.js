@@ -1,8 +1,8 @@
-import {Theme} from "../../modle/theme";
-import {Banner} from "../../modle/banner";
-import {Category} from "../../modle/category";
-import {Activity} from "../../modle/activity";
-import {SpuPaging} from "../../modle/spu-paging";
+import {Theme} from "../../modles/theme";
+import {Banner} from "../../modles/banner";
+import {Category} from "../../modles/category";
+import {Activity} from "../../modles/activity";
+import {SpuPaging} from "../../modles/spu-paging";
 
 Page({
 

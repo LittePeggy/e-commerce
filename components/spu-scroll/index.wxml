@@ -6,7 +6,10 @@
     <scroll-view scroll-x class="scroll-view" >
       <view class="inner">
         <block wx:for="{{spuList}}" wx:key="index" >
-          <view class="spu-container">
+          <view 
+            class="spu-container"
+            data-pid="{{item.id}}"
+            bindtap="onTap" >
             <image class="spu-img" src="{{item.img}}" ></image>
             <text class="spu-title">{{item.title.length >= 8 ? s.substring(item.title, 0, 5) + "..." : item.title}}</text>
             <l-price

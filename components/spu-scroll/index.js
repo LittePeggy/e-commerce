@@ -19,6 +19,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onTap: function (e){
+      wx.navigateTo({
+        url: `/pages/detail/detail?pid=${e.currentTarget.dataset.pid}`,
+      })
+    }
   }
 })
