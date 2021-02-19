@@ -15,6 +15,7 @@
     display:flex;
     flex-direction:column;
     padding: 15rpx 10rpx 10rpx 10rpx;
+    background-color: #ffffff;
 }
 
 .title{
@@ -22,9 +23,33 @@
     color: #333333;
 }
 
+.tags{
+    display:flex;
+    flex-direction:row;
+    margin-bottom: 8rpx;
+    margin-top: 6rpx;
+    flex-wrap: wrap;
+}
+
 .tag{
     background-color: #DCEBE6;
     color: #157658;
     height: 36rpx;
     padding-right: 6rpx;
+}
+
+.spu-price{
+    display:flex;
+    flex-direction:row;
+}
+
+.discount-price{
+    margin-left: 20rpx;
+}
+
+.subtitle{
+    font-size: 24rpx;
+    color: #888888;
+    font-weight: 300;
+    margin-top: 6rpx;
 }
