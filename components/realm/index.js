@@ -1,4 +1,6 @@
 // components/realm/index.js
+import {FenceGroup} from "../../components/modles/fence-group";
+
 Component({
   /**
    * 组件的属性列表
@@ -13,6 +15,16 @@ Component({
    */
   data: {
 
+  },
+
+  observers: {
+    "spu": function (spu){
+      if (!spu){
+        return
+      }
+      const fanceGroup = new FenceGroup(spu);
+      fanceGroup.initFences1()
+    }
   },
 
   /**
