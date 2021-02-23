@@ -1,7 +1,9 @@
+import {Cell} from './cell'
+
 class Fence {
 
     specs
-    valueTitle = []
+    cells = []
 
     constructor(specs) {
         this.specs = specs
@@ -9,15 +11,14 @@ class Fence {
 
     init(){
         this.specs.forEach(spec=>{
-            this.pushVlueTitle(spec.value)
+            const cell = new Cell(spec)
+            this.cells.push(cell)
         })
     }
 
-    pushVlueTitle(title){
-        this.valueTitle.push(title)
-    }
-
-
+    // pushVlueTitle(title){
+    //     this.valueTitle.push(title)
+    // }
 
 }
 

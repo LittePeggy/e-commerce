@@ -11,11 +11,11 @@ class FenceGroup{
         this.skuList = spu.sku_list
     }
 
-    initFences(){
+    initFences1(){
         const matrix = this._createMatrix(this.skuList)
         let fences = []
         let currentJ = -1
-        matrix.forEach((element, i, j)=>{
+        matrix.each((element, i, j)=>{
             if (currentJ !== j){
                 currentJ = j
                 fences[j] = this._createFence()
@@ -25,7 +25,7 @@ class FenceGroup{
         console.log(fences)
     }
 
-    initFences1(){
+    initFences(){
         const matrix = this._createMatrix(this.skuList)
         let fences = []
         const AT = matrix.transpose()

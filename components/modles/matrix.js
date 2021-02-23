@@ -16,7 +16,7 @@ class Matrix{
      * 封装的目的：减少双层for循环的编写
      * @param cb
      */
-    forEach(cb){
+    each(cb){
         for (let j = 0; j < this.colNum; j++) {
             for (let i = 0; i < this.rowNum; i++) {
                 const element = this.m[i][j]

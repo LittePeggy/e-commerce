@@ -61,7 +61,14 @@
       "list": []
     },
     "miniprogram": {
-      "list": []
+      "list": [
+        {
+          "name": "pages/homework6/homework6",
+          "pathName": "pages/homework6/homework6",
+          "query": "pid=25",
+          "scene": null
+        }
+      ]
     }
   }
 }
