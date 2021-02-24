@@ -13,7 +13,7 @@ class Judger{
     initPathDic(){
         this.fenceGroup.spu.sku_list.forEach(sku=>{
             const skuCode = new SkuCode(sku.code)
-
+            this.pathDic.concat(skuCode.totalSegments)
         })
     }
 
