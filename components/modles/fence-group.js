@@ -5,6 +5,7 @@ class FenceGroup{
 
     spu
     skuList = []
+    fences = []
 
     constructor(spu) {
         this.spu = spu
@@ -27,15 +28,13 @@ class FenceGroup{
 
     initFences(){
         const matrix = this._createMatrix(this.skuList)
-        let fences = []
         const AT = matrix.transpose()
-        console.log(AT)
         AT.forEach(r=>{
             const fence = new Fence(r)
             fence.init()
-            fences.push(fence)
+            this.fences.push(fence)
         })
-        console.log(fences)
+        console.log(this.fences)
     }
 
 

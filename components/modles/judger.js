@@ -11,7 +11,7 @@ class Judger{
     }
 
     initPathDic(){
-        this.fenceGroup.spu.skuList.forEach(sku=>{
+        this.fenceGroup.spu.sku_list.forEach(sku=>{
             const skuCode = new SkuCode(sku.code)
 
         })

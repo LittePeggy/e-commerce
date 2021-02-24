@@ -67,6 +67,12 @@
           "pathName": "pages/homework6/homework6",
           "query": "pid=25",
           "scene": null
+        },
+        {
+          "name": "pages/detail/detail",
+          "pathName": "pages/detail/detail",
+          "query": "pid=2",
+          "scene": null
         }
       ]
     }

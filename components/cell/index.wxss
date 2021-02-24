@@ -1,1 +1,13 @@
-/* components/cell/index.wxss */
+.container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 1rpx solid #333333;
+  background-color: #ffffff;
+  margin-right: 30rpx;
+}
+
+.inner-container{
+  padding: 5rpx 10rpx;
+  color: #555555;
+}

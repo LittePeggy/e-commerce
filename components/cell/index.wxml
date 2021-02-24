@@ -1,2 +1,5 @@
-<!--components/cell/index.wxml-->
-<text>components/cell/index.wxml</text>
+<view class="container">
+    <view class="inner-container">
+        {{cell.title}}
+    </view>
+</view>

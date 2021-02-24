@@ -37,6 +37,11 @@ Component({
       this.setData({
         h
       })
+    },
+    onTap: function (event) {
+      wx.navigateTo({
+        url: `/pages/detail/detail?pid=${this.data.data.id}`,
+      })
     }
   }
 })
