@@ -1,5 +1,25 @@
-<view class="container">
-    <view class="inner-container">
+<view bind:tap="onTap" class="container {{c.changeCellStyle(cell.status).out}}">
+    <view class="inner-container {{c.changeCellStyle(cell.status).inner}}">
         {{cell.title}}
     </view>
 </view>
+
+<wxs module="c">
+    changeCellStyle = function(status){
+        if(status === "forbidden"){
+            return {
+                out: 'forbidden',
+                inner: ''
+            }
+        }
+
+        if(status === "selected"){
+            return {
+                out: 'selected-out',
+                inner: 'selected-inner'
+            }
+        }
+    }
+
+    module.exports.changeCellStyle = changeCellStyle
+</wxs>

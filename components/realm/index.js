@@ -15,7 +15,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    fences: Array
+    fences: Array,
+    judger: Object
   },
 
   observers: {
@@ -26,7 +27,7 @@ Component({
       const fenceGroup = new FenceGroup(spu);
       fenceGroup.initFences()
       const judger = new Judger(fenceGroup);
-      this.bindInitData(fenceGroup)
+      this.bindInitData(fenceGroup, judger)
     }
   },
 
@@ -34,10 +35,16 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    bindInitData: function (fenceGroup) {
+    bindInitData: function (fenceGroup, judger) {
       this.setData({
-        fences: fenceGroup.fences
+        fences: fenceGroup.fences,
+        judger
       })
+    },
+    onCellTap: function (event) {
+      console.log(event)
+      const cell = event.detail.cell
+      this.data.judger.judger(cell);
     }
   }
 })

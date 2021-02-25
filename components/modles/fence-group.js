@@ -34,7 +34,6 @@ class FenceGroup{
             fence.init()
             this.fences.push(fence)
         })
-        console.log(this.fences)
     }
 
 

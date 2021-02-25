@@ -4,7 +4,9 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    cell: Object
+    cell: Object,
+    x: Number,
+    y: Number
   },
 
   /**
@@ -18,6 +20,15 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+      onTap(event){
+        this.triggerEvent("cellTap", {
+          cell: this.properties.cell,
+          x: this.x,
+          y: this.y
+        }, {
+          bubbles: true, // 开启冒泡
+          composed: true // 开启跨越组件
+        })
+      }
   }
 })

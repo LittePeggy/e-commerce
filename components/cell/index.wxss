@@ -1,13 +1,30 @@
-.container{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  border: 1rpx solid #333333;
-  background-color: #ffffff;
+.container {
+  border: 2rpx solid #333333;
+  color: #555555;
   margin-right: 30rpx;
 }
 
-.inner-container{
-  padding: 5rpx 10rpx;
-  color: #555555;
+.inner-container {
+  padding: 6rpx 15rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #ffffff;
+  font-size: 24rpx;
+}
+
+.forbidden {
+  border: 2rpx dotted #a3a2a2;
+  color: #a3a2a2;
+}
+
+.selected-out {
+  border: 2rpx solid #157658;
+  color: #ffffff;
+  background-color: #ffffff;
+  padding: 2rpx;
+}
+
+.selected-inner {
+  background-color: #157658;
 }

@@ -1,14 +1,16 @@
 .container{
-  padding: 20rpx;
+  padding: 0rpx 10rpx 0rpx 10rpx;
 }
 
 .title{
+  font-size: 24rpx;
   color: #555555;
 }
 
 .inner-container{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   margin: 20rpx 0rpx;
 }
 
