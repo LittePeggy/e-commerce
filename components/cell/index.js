@@ -23,8 +23,8 @@ Component({
       onTap(event){
         this.triggerEvent("cellTap", {
           cell: this.properties.cell,
-          x: this.x,
-          y: this.y
+          x: this.properties.x,
+          y: this.properties.y
         }, {
           bubbles: true, // 开启冒泡
           composed: true // 开启跨越组件

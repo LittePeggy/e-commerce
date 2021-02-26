@@ -42,9 +42,11 @@ Component({
       })
     },
     onCellTap: function (event) {
-      console.log(event)
-      const cell = event.detail.cell
-      this.data.judger.judger(cell);
+      const detail = event.detail
+      this.data.judger.judger(detail);
+      this.setData({
+        fences: this.data.judger.fenceGroup.fences
+      })
     }
   }
 })

@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="634e51aa-9f25-4f32-b1fb-d0b58c8c6598" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/enum.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/modles/sku-padding.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/cell/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/cell/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cell/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/components/cell/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cell/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/components/cell/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/fence/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/fence/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/fence/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/components/fence/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/fence/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/components/fence/index.wxss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/modles/cell.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/modles/cell.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/modles/fence-group.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/modles/fence-group.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/modles/judger.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/modles/judger.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/realm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/realm/index.js" afterDir="false" />
@@ -85,7 +80,7 @@
       <workItem from="1612351752645" duration="4085000" />
       <workItem from="1613823782667" duration="1337000" />
       <workItem from="1614131152462" duration="9694000" />
-      <workItem from="1614221005093" duration="11887000" />
+      <workItem from="1614221005093" duration="15513000" />
     </task>
     <servers />
   </component>
