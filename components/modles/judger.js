@@ -12,6 +12,7 @@ class Judger{
     constructor(fenceGroup) {
         this.fenceGroup = fenceGroup
         this._initPathDic()
+        this._initSkuPadding()
     }
 
     _initSkuPadding(){
@@ -21,24 +22,38 @@ class Judger{
     _initPathDic(){
         this.fenceGroup.spu.sku_list.forEach(sku=>{
             const skuCode = new SkuCode(sku.code)
-            this.pathDic.concat(skuCode.totalSegments)
+            this.pathDic = this.pathDic.concat(skuCode.totalSegments)
         })
     }
 
-    judger(cell){
-        this._changeCurrentCellStatus(cell)
+    judger(detail){
+        this._changeCurrentCellStatus(detail)
         this.fenceGroup.eachCell((cell, x, y)=>{
             const path = this._findPotentialPath(cell, x, y)
-            console.log(path)
+            if (!path) {
+                return
+            }
+            if (this._isInDict(path)) {
+                this.fenceGroup.fences[x].cells[y].status = CellStatus.WAITING
+            } else {
+                this.fenceGroup.fences[x].cells[y].status = CellStatus.FORBIDDEN
+            }
         })
+    }
+
+    _isInDict(path){
+        return this.pathDic.includes(path)
     }
 
     _findPotentialPath(cell, x, y){
-        const joiner = new Joiner()
+        const joiner = new Joiner("#")
         for (let i = 0; i < this.fenceGroup.fences.length; i++) {
             const selected = this.skuPadding.findSelectedCellByX(i)
             if (x === i) {
                 // 当前行
+                if ( this.skuPadding.isSelected(cell, i) ) {
+                    return null
+                }
                 const cellCode = this._getCellCode(cell.spec)
                 joiner.join(cellCode)
             } else {
@@ -60,8 +75,7 @@ class Judger{
             this.fenceGroup.fences[x].cells[y].status = CellStatus.SELECTED
             this.skuPadding.insertCell(cell, x)
         }
-
-        if (cell.status === CellStatus.SELECTED) {
+        else if (cell.status === CellStatus.SELECTED) {
             this.fenceGroup.fences[x].cells[y].status = CellStatus.WAITING
             this.skuPadding.removeCell(x)
         }

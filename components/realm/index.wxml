@@ -1,7 +1,34 @@
 <view class="container">
-    <view class="inner-container" >
-        <block wx:for="{{fences}}" wx:key="index" >
-            <s-fence bind:cellTap="onCellTap" fence="{{item}}" x="{{index}}" ></s-fence>
-        </block>
+    <view class="sku-preview">
+        <image class="sku-img" ></image>
+        <view class="sku-description">
+            <text class="sku-title">SKU测试</text>
+            <view class="">
+                <view class="sku-price" >
+                    <l-price
+                            color="#157658"
+                            value-size="28"
+                            unit-size="20"
+                            autofix
+                            value="777"></l-price>
+                    <l-price
+                            l-class="discount-price"
+                            color="#999999"
+                            value-size="26"
+                            deleted
+                            value="999"></l-price>
+                </view>
+                <view>
+                    <text class="sku-padding">请选择：</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="hr"></view>
+    <block wx:for="{{fences}}" wx:key="index" >
+        <s-fence bind:cellTap="onCellTap" fence="{{item}}" x="{{index}}" ></s-fence>
+    </block>
+    <view class="counter-container" >
+
     </view>
 </view>

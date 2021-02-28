@@ -18,6 +18,14 @@ class SkuPadding {
         return this.padding[x]
     }
 
+    isSelected(cell, x){
+        const paddingCell = this.padding[x]
+        if (!paddingCell) {
+            return false
+        }
+        return paddingCell.id === cell.id
+    }
+
 }
 
 export {
