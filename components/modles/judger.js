@@ -22,6 +22,10 @@ class Judger{
             return
         }
         this.skuPadding.init(defaultSku)
+        this.skuPadding.padding.forEach(c=>{
+            this.fenceGroup.setCellStatusByCellId(c.id, CellStatus.SELECTED)
+        })
+        this.judger(null, true)
         console.log(this.skuPadding)
     }
 
@@ -32,17 +36,19 @@ class Judger{
         })
     }
 
-    judger(detail){
-        this._changeCurrentCellStatus(detail)
+    judger(detail, isInit=false){
+        if (!isInit) {
+            this._changeCurrentCellStatus(detail)
+        }
         this.fenceGroup.eachCell((cell, x, y)=>{
             const path = this._findPotentialPath(cell, x, y)
             if (!path) {
                 return
             }
             if (this._isInDict(path)) {
-                this.fenceGroup.fences[x].cells[y].status = CellStatus.WAITING
+                this.fenceGroup.setCellStatusByXY(x, y, CellStatus.WAITING)
             } else {
-                this.fenceGroup.fences[x].cells[y].status = CellStatus.FORBIDDEN
+                this.fenceGroup.setCellStatusByXY(x, y, CellStatus.FORBIDDEN)
             }
         })
     }
@@ -78,11 +84,11 @@ class Judger{
 
     _changeCurrentCellStatus({cell, x, y}){
         if (cell.status === CellStatus.WAITING) {
-            this.fenceGroup.fences[x].cells[y].status = CellStatus.SELECTED
+            this.fenceGroup.setCellStatusByXY(x, y, CellStatus.SELECTED)
             this.skuPadding.insertCell(cell, x)
         }
         else if (cell.status === CellStatus.SELECTED) {
-            this.fenceGroup.fences[x].cells[y].status = CellStatus.WAITING
+            this.fenceGroup.setCellStatusByXY(x, y, CellStatus.WAITING)
             this.skuPadding.removeCell(x)
         }
     }

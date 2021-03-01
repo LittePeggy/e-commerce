@@ -41,6 +41,18 @@ class FenceGroup{
         return this.skuList.find(s => s.id === defaultSkuId)
     }
 
+    setCellStatusByXY(x, y, status){
+        this.fences[x].cells[y].status = status
+    }
+
+    setCellStatusByCellId(cellId, status){
+        this.eachCell((cell, i, j)=>{
+            if (cell.id === cellId) {
+                cell.status = status
+            }
+        })
+    }
+
     eachCell(cb) {
         for (let i = 0; i < this.fences.length; i++) {
             for (let j = 0; j < this.fences[i].cells.length; j++) {
