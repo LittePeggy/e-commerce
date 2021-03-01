@@ -41,7 +41,6 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.14.1",
-  "appid": "wx2e4b838cbd6f33aa",
   "projectname": "e-commerce",
   "debugOptions": {
     "hidedInDevtools": []

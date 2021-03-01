@@ -17,6 +17,12 @@ class Judger{
 
     _initSkuPadding(){
         this.skuPadding = new SkuPadding()
+        const defaultSku = this.fenceGroup.getDefaultSku()
+        if (!defaultSku) {
+            return
+        }
+        this.skuPadding.init(defaultSku)
+        console.log(this.skuPadding)
     }
 
     _initPathDic(){
