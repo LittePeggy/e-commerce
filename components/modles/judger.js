@@ -16,7 +16,8 @@ class Judger{
     }
 
     _initSkuPadding(){
-        this.skuPadding = new SkuPadding()
+        const spceLength = this.fenceGroup.fences.length
+        this.skuPadding = new SkuPadding(spceLength)
         const defaultSku = this.fenceGroup.getDefaultSku()
         if (!defaultSku) {
             return
@@ -91,6 +92,10 @@ class Judger{
             this.fenceGroup.setCellStatusByXY(x, y, CellStatus.WAITING)
             this.skuPadding.removeCell(x)
         }
+    }
+
+    isSkuIntact () {
+        return this.skuPadding.isIntact()
     }
 
 }

@@ -3,9 +3,10 @@ import {Cell} from './cell'
 class SkuPadding {
 
     padding = []
+    size
 
-    constructor () {
-
+    constructor (size) {
+        this.size = size
     }
 
     init(sku){
@@ -33,6 +34,19 @@ class SkuPadding {
             return false
         }
         return paddingCell.id === cell.id
+    }
+
+    isIntact () {
+        for (let i = 0; i < this.size; i++) {
+            if (this._isEmptyPart(i)){
+                return false
+            }
+        }
+        return true
+    }
+
+    _isEmptyPart (index) {
+        return this.padding[index]?false:true
     }
 
 }

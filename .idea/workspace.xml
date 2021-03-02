@@ -3,11 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="634e51aa-9f25-4f32-b1fb-d0b58c8c6598" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/modles/fence-group.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/modles/fence-group.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/modles/judger.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/modles/judger.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/modles/sku-padding.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/modles/sku-padding.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/realm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/realm/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/realm/index.wxml" beforeDir="false" afterPath="$PROJECT_DIR$/components/realm/index.wxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/realm/index.wxss" beforeDir="false" afterPath="$PROJECT_DIR$/components/realm/index.wxss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modles/spu.js" beforeDir="false" afterPath="$PROJECT_DIR$/modles/spu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.config.json" beforeDir="false" afterPath="$PROJECT_DIR$/project.config.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +81,7 @@
       <workItem from="1614221005093" duration="15831000" />
       <workItem from="1614325947763" duration="2238000" />
       <workItem from="1614563651643" duration="2164000" />
+      <workItem from="1614649899032" duration="3664000" />
     </task>
     <servers />
   </component>

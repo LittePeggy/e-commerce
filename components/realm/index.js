@@ -1,6 +1,7 @@
 // components/realm/index.js
 import {FenceGroup} from "../../components/modles/fence-group";
 import {Judger} from "../../components/modles/judger";
+import {Spu} from "../../modles/spu";
 
 Component({
   /**
@@ -19,13 +20,19 @@ Component({
     judger: Object,
     prevewImg: String,
     title: String,
-    stock: null
+    stock: null,
+    isNoSpece: false,
+    isIntact: false
   },
 
   observers: {
     "spu": function (spu){
       if (!spu){
         return
+      }
+      if (Spu.isNoSpece(spu)) {
+        this.bindSkuData(spu.sku_list[0])
+        return;
       }
       const fenceGroup = new FenceGroup(spu);
       fenceGroup.initFences()
@@ -54,7 +61,6 @@ Component({
       })
     },
     bindSkuData: function (sku) {
-      console.log(sku)
       this.setData({
         prevewImg: sku.img,
         title: sku.title,
@@ -73,7 +79,8 @@ Component({
       const detail = event.detail
       this.data.judger.judger(detail);
       this.setData({
-        fences: this.data.judger.fenceGroup.fences
+        fences: this.data.judger.fenceGroup.fences,
+        isIntact: this.data.judger.isSkuIntact()
       })
     }
   }
