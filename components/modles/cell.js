@@ -12,6 +12,10 @@ class Cell{
         this.spec = spec
     }
 
+    getCellCode(){
+        return spec.key_id + "-" + spec.value_id
+    }
+
 }
 
 export {

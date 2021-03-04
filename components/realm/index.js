@@ -1,6 +1,7 @@
 // components/realm/index.js
 import {FenceGroup} from "../../components/modles/fence-group";
 import {Judger} from "../../components/modles/judger";
+import {Cell} from "../../components/modles/cell";
 import {Spu} from "../../modles/spu";
 
 Component({
@@ -66,7 +67,8 @@ Component({
         title: sku.title,
         price: sku.price,
         discountPrice: sku.discount_price,
-        stock: sku.stock
+        stock: sku.stock,
+        isIntact: this.judger.isSkuIntact()
       })
     },
     bindInitData: function (fenceGroup, judger) {
@@ -76,11 +78,17 @@ Component({
       })
     },
     onCellTap: function (event) {
-      const detail = event.detail
-      this.data.judger.judger(detail);
+      const data = event.detail
+      const cell = new Cell(data.specs)
+      const judger = this.data.judger
+      judger.judger(cell, data.x, data.y);
+      const isIntact = judger.isSkuIntact()
+      if (isIntact) {
+        const currentSku = judger.getDeterminateSku()
+        this.bindSkuData(currentSku)
+      }
       this.setData({
-        fences: this.data.judger.fenceGroup.fences,
-        isIntact: this.data.judger.isSkuIntact()
+        fences: this.data.judger.fenceGroup.fences
       })
     }
   }

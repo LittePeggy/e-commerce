@@ -1,4 +1,5 @@
 import {Cell} from './cell'
+import {Joiner} from '../../utils/joiner'
 
 class SkuPadding {
 
@@ -43,6 +44,14 @@ class SkuPadding {
             }
         }
         return true
+    }
+
+    getSkuCode(){
+        const joiner = new Joiner("#")
+        this.padding.forEach(cell=>{
+            joiner.join(cell.getCellCode())
+        })
+        return joiner.getStr()
     }
 
     _isEmptyPart (index) {

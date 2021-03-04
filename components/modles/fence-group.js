@@ -36,6 +36,12 @@ class FenceGroup{
         })
     }
 
+    getSkuByCode(skuCode){
+        const fullCode = this.spu.id + "$" + skuCode
+        const sku = this.spu.sku_list.find(s=>s.code === fullCode)
+        return sku ? sku : null
+    }
+
     getDefaultSku(){
         const defaultSkuId = this.spu.default_sku_id
         return this.skuList.find(s => s.id === defaultSkuId)

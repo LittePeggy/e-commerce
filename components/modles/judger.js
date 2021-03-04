@@ -37,9 +37,9 @@ class Judger{
         })
     }
 
-    judger(detail, isInit=false){
+    judger(cell, row, col, isInit=false){
         if (!isInit) {
-            this._changeCurrentCellStatus(detail)
+            this._changeCurrentCellStatus(cell, row, col)
         }
         this.fenceGroup.eachCell((cell, x, y)=>{
             const path = this._findPotentialPath(cell, x, y)
@@ -83,7 +83,7 @@ class Judger{
         return spec.key_id + "-" + spec.value_id
     }
 
-    _changeCurrentCellStatus({cell, x, y}){
+    _changeCurrentCellStatus(cell, x, y){
         if (cell.status === CellStatus.WAITING) {
             this.fenceGroup.setCellStatusByXY(x, y, CellStatus.SELECTED)
             this.skuPadding.insertCell(cell, x)
@@ -96,6 +96,12 @@ class Judger{
 
     isSkuIntact () {
         return this.skuPadding.isIntact()
+    }
+
+    getDeterminateSku(){
+        const skuCode = this.skuPadding.getSkuCode();
+        const sku = this.fenceGroup.getSkuByCode(skuCode);
+        return sku
     }
 
 }
