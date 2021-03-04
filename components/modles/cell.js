@@ -13,7 +13,7 @@ class Cell{
     }
 
     getCellCode(){
-        return spec.key_id + "-" + spec.value_id
+        return this.spec.key_id + "-" + this.spec.value_id
     }
 
 }

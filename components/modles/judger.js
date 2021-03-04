@@ -26,8 +26,7 @@ class Judger{
         this.skuPadding.padding.forEach(c=>{
             this.fenceGroup.setCellStatusByCellId(c.id, CellStatus.SELECTED)
         })
-        this.judger(null, true)
-        console.log(this.skuPadding)
+        this.judger(null, null, null, true)
     }
 
     _initPathDic(){
@@ -104,6 +103,16 @@ class Judger{
         return sku
     }
 
+    getCurrentValues(){
+        return this.skuPadding.getCurrentSpecValues()
+    }
+
+    getMissingKeysTitle() {
+        const missingKeysIndex = this.skuPadding.getMissingSpeckeysIndex()
+        return missingKeysIndex.map(i=>{
+            return this.fenceGroup.fences[i].title
+        })
+    }
 }
 
 export {

@@ -26,8 +26,8 @@
                 <view class="sku-padding" wx:if="{{!isNoSpece}}" >
                     <text wx:if="{{!isIntact}}">请选择：</text>
                     <text wx:else >已选：</text>
-                    <text wx:if="{{!isIntact}}">待选规格名</text>
-                    <text wx:else >已选规格值</text>
+                    <text wx:if="{{!isIntact}}">{{missingKeys}}</text>
+                    <text wx:else >{{currentValues}}</text>
                 </view>
             </view>
         </view>

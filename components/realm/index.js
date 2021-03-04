@@ -77,8 +77,7 @@ Component({
         title: sku.title,
         price: sku.price,
         discountPrice: sku.discount_price,
-        stock: sku.stock,
-        isIntact: this.judger.isSkuIntact()
+        stock: sku.stock
       })
     },
     bindFenceGroupData: function (fenceGroup, judger) {
@@ -89,12 +88,15 @@ Component({
     },
     bindTipData: function () {
       this.setData({
-        isIntact: this.data.judger.isSkuIntact()
+        isIntact: this.data.judger.isSkuIntact(),
+        currentValues: this.data.judger.getCurrentValues(),
+        missingKeys: this.data.judger.getMissingKeysTitle()
       })
     },
     onCellTap: function (event) {
       const data = event.detail
-      const cell = new Cell(data.specs)
+      const cell = new Cell(data.cell.spec)
+      cell.status = data.cell.status
       const judger = this.data.judger
       judger.judger(cell, data.x, data.y);
       const isIntact = judger.isSkuIntact()
@@ -102,6 +104,7 @@ Component({
         const currentSku = judger.getDeterminateSku()
         this.bindSkuData(currentSku)
       }
+      this.bindTipData()
       this.setData({
         fences: this.data.judger.fenceGroup.fences
       })

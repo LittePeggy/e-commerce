@@ -54,6 +54,23 @@ class SkuPadding {
         return joiner.getStr()
     }
 
+    getCurrentSpecValues () {
+        const values = this.padding.map(cell=>{
+            return cell ? cell.spec.value : null
+        })
+        return values
+    }
+
+    getMissingSpeckeysIndex () {
+        const missingkeysIndex = []
+        for (let i = 0; i < this.size; i++){
+            if (!this.padding[i]) {
+                missingkeysIndex.push(i)
+            }
+        }
+        return missingkeysIndex
+    }
+
     _isEmptyPart (index) {
         return this.padding[index]?false:true
     }
