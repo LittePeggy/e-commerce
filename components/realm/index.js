@@ -18,7 +18,7 @@ Component({
    */
   data: {
     fences: Array,
-    judger: Object,
+    judger: null,
     prevewImg: String,
     title: String,
     stock: null,
@@ -27,23 +27,14 @@ Component({
   },
 
   observers: {
-    "spu": function (spu){
-      if (!spu){
+    "spu": function (spu) {
+      if (!spu) {
         return
       }
       if (Spu.isNoSpece(spu)) {
-        this.bindSkuData(spu.sku_list[0])
-        return;
-      }
-      const fenceGroup = new FenceGroup(spu);
-      fenceGroup.initFences()
-      const judger = new Judger(fenceGroup);
-      this.bindInitData(fenceGroup, judger)
-      const defaultSku = fenceGroup.getDefaultSku()
-      if (defaultSku){
-        this.bindSkuData(defaultSku)
+        this.processNoSpec(spu)
       } else {
-        this.bindSpuData()
+        this.processHasSpec(spu)
       }
     }
   },
@@ -52,6 +43,25 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    processNoSpec: function (spu) {
+      this.bindSkuData(spu.sku_list[0])
+      this.setData({
+        isNoSpece: true
+      })
+    },
+    processHasSpec: function (spu) {
+      const fenceGroup = new FenceGroup(spu);
+      fenceGroup.initFences()
+      const judger = new Judger(fenceGroup);
+      this.bindFenceGroupData(fenceGroup, judger)
+      const defaultSku = fenceGroup.getDefaultSku()
+      if (defaultSku) {
+        this.bindSkuData(defaultSku)
+      } else {
+        this.bindSpuData()
+      }
+      this.bindTipData()
+    },
     bindSpuData: function () {
       const spu = this.properties.spu
       this.setData({
@@ -71,10 +81,15 @@ Component({
         isIntact: this.judger.isSkuIntact()
       })
     },
-    bindInitData: function (fenceGroup, judger) {
+    bindFenceGroupData: function (fenceGroup, judger) {
       this.setData({
         fences: fenceGroup.fences,
         judger
+      })
+    },
+    bindTipData: function () {
+      this.setData({
+        isIntact: this.data.judger.isSkuIntact()
       })
     },
     onCellTap: function (event) {
