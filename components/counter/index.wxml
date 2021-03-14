@@ -1,6 +1,9 @@
 <l-counter 
   l-class="container"
-  l-symbol-class="all-background"
+  l-symbol-class="all-background font-size"
   l-count-class="all-background inpunt-size"
-  count="1" min="1" >
+  l-disabled-class="all-background"
+  count="{{count}}" 
+  min="{{min}}" 
+  max="{{max}}" >
 </l-counter>

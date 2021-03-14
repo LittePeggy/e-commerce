@@ -3,6 +3,7 @@ import {FenceGroup} from "../../components/modles/fence-group";
 import {Judger} from "../../components/modles/judger";
 import {Cell} from "../../components/modles/cell";
 import {Spu} from "../../modles/spu";
+import {Cater} from "../modles/cater"
 
 Component({
   /**
@@ -23,7 +24,9 @@ Component({
     title: String,
     stock: null,
     isNoSpece: false,
-    isIntact: false
+    isIntact: false,
+    overStock: false,
+    currentCount: Cater.sku_min_count
   },
 
   observers: {
@@ -45,6 +48,7 @@ Component({
   methods: {
     processNoSpec: function (spu) {
       this.bindSkuData(spu.sku_list[0])
+      this.setStockStatus(spu.sku_list[0].stock, this.data.currentCount)
       this.setData({
         isNoSpece: true
       })
@@ -57,6 +61,7 @@ Component({
       const defaultSku = fenceGroup.getDefaultSku()
       if (defaultSku) {
         this.bindSkuData(defaultSku)
+        this.setStockStatus(defaultSku.stock, this.data.currentCount)
       } else {
         this.bindSpuData()
       }
@@ -103,11 +108,25 @@ Component({
       if (isIntact) {
         const currentSku = judger.getDeterminateSku()
         this.bindSkuData(currentSku)
+        this.setStockStatus(currentSku.stock, this.data.currentCount)
       }
       this.bindTipData()
       this.setData({
         fences: this.data.judger.fenceGroup.fences
       })
+    },
+    isOutOfStock: function(stock, currentCount){
+      return currentCount > stock
+    },
+    setStockStatus: function(stock, currentCount){
+      this.setData({
+        overStock: this.isOutOfStock(stock, currentCount)
+      })
+    },
+    onSelectCount: function(event){
+      this.data.currentCount = event.detail.count
+      const currentSku = this.data.judger.getDeterminateSku()
+      this.setStockStatus(currentSku.stock, event.detail.count)
     }
   }
 })
